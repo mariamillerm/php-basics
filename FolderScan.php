@@ -1,4 +1,6 @@
-<?php       
+<?php      
+namespace Itransition\ScanFolder;
+ 
 function scanDirectory(string $path, string $indent)
 {
     if ($dir = @opendir($path)) {
@@ -19,11 +21,11 @@ function scanDirectory(string $path, string $indent)
 function isStandardDirectory(string $path): bool
 {
     $res = true;
-    if (is_dir($path) && !is_readable($path)) {
+    if (!is_dir($path)) {
         $res = false;
-    } elseif (is_link($path)) {
+    } elseif (is_dir($path) && !is_readable($path)) {
         $res = false;
-    } elseif (!is_dir($path) {
+    } elseif (is_link($path) {
         $res = false;
     }
 
@@ -34,4 +36,3 @@ function printFile(string $indent, string $fileName)
 {
     echo $indent . $fileName . "\n";
 }
-

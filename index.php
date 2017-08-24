@@ -8,7 +8,3 @@
     } else {
         scanDirectory(__DIR__, '');
     }
-
-    
-
-
