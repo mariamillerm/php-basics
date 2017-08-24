@@ -1,7 +1,13 @@
 <?php
     require 'FolderScan.php';
     
-    scanDirectory(__DIR__, '');
+    if (PHP_SAPI !== 'cli') {
+        echo '<pre>';
+        scanDirectory(__DIR__, '');
+        echo '</pre>';
+    } else {
+        scanDirectory(__DIR__, '');
+    }
 
     
 
