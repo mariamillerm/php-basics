@@ -16,13 +16,18 @@ function scanDirectory(string $path, string $indent)
 
 }
 
-function isStandardDirectory(string $path) : bool
+function isStandardDirectory(string $path): bool
 {
-    if ((is_dir($path) && !is_readable($path)) || is_link($path) || !is_dir($path)) {
-        return false;
+    $res = true;
+    if (is_dir($path) && !is_readable($path)) {
+        $res = false;
+    } elseif (is_link($path)) {
+        $res = false;
+    } elseif (!is_dir($path) {
+        $res = false;
     }
 
-    return true;
+    return $res;
 }
 
 function printFile(string $indent, string $fileName)
